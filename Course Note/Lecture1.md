@@ -59,3 +59,22 @@ when it runs
 frequency find 
     * Minor cycle
     * Major cycle
+
+```C
+    every_major_cycle do{
+    read all in_signals;
+    run_minor_cycle_1_processes;
+    wait_for_interrupt;
+    write all out_signals;
+    ...
+    read all in_signals;
+    run_minor_cycle_n_processes;
+    wait_for_interrupt;
+    write all out_signals;
+    }
+```
+First try:  
+**_Minor cycle_**: greatest common divisor
+(sv. sgd)最大公倍数  
+**_Major cycle_**: least common multiplier
+(sv. mgn)最小公因数
