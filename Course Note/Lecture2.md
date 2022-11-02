@@ -156,3 +156,16 @@ utilisation is $< 0.69$
 
 Utilisation based test:  
 $G=n(2^{1/n}-1)$
+
+## Summarising RMS
+* Processes with long WCET
+  * RMS does not require splitting the code
+*  Sporadic events
+   *  RMS only runs them when they arrive
+*  Processes with long period but short deadline
+   *  Can allocate fixed priorities based on
+deadlines for the cases $D_i \leq
+T_i$  
+   * Deadline monotonic scheduling
+* Run-time process dependence
+  * Overruns: highest priority task not affected!
