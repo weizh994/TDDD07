@@ -26,7 +26,7 @@ and
 * Repetition appears!(**反复出现**)
 
 ### Harmonic processes
-* Sum of WCETs fits in ... (major cycle?)
+* Sum of WCETs fits in ... (minor cycle)
 
 ### Next try
 * In either case we need to
