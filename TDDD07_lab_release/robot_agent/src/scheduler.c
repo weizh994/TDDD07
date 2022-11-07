@@ -138,6 +138,7 @@ void scheduler_run(scheduler_t *ces)
 
 	/* --- Set minor cycle period --- */
 	//ces->minor = ...;
+	
 
 	/* --- Write your code here --- */
 
