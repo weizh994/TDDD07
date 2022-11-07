@@ -137,10 +137,31 @@ void scheduler_run(scheduler_t *ces)
 	/* --- Local variables (define variables here) --- */
 
 	/* --- Set minor cycle period --- */
-	//ces->minor = ...;
-	
+	ces->minor = 500;
+
+	// Major cycle
+	/* while (1) { */
+	/* 	// Minor cycle 1 */
+	/* 	scheduler_exec_task(ces, s_TASK_MISSION_ID); */
+	/* 	scheduler_wait_for_timer(ces); */
+		
+	/* 	// Minor cycle 2 */
+	/* 	scheduler_wait_for_timer(ces); */
+		
+	/* 	// Minor cycle 3 */
+	/* 	scheduler_wait_for_timer(ces); */
+		
+	/* 	// Minor cycle 4 */
+	/* 	scheduler_wait_for_timer(ces); */
+	/* } */
+	scheduler_exec_task(ces, s_TASK_REFINE_ID);
+	scheduler_exec_task(ces, s_TASK_REPORT_ID);
+	double start_time = timelib_unix_timestamp();
+	scheduler_exec_task(ces, s_TASK_MISSION_ID);
+	double end_time = timelib_unix_timestamp();
+	double task_time = end_time - start_time;
+	printf("task_time: %f", task_time);
 
 	/* --- Write your code here --- */
-
 
 }
