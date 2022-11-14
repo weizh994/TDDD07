@@ -165,7 +165,7 @@ void scheduler_run(scheduler_t *ces)
 		/* navigate_time += run_task(ces, s_TASK_NAVIGATE_ID); */
 		/* control_time += run_task(ces, s_TASK_CONTROL_ID); */
 		avoid_time += run_task(ces, s_TASK_AVOID_ID);
-		avoid_time_max = (avoid_task > avoid_task_max) ? avoid_task : avoid_task_max;
+		avoid_time_max = (avoid_time > avoid_time_max) ? avoid_time : avoid_time_max;
 	
 		printf("iteration: %d\n", i);
 	}
