@@ -148,7 +148,7 @@ void scheduler_run(scheduler_t *ces)
 
 	double total_running_time_start = timelib_unix_timestamp();
 
-	for (int 0; i < 1000; i++) {
+	for (int = 0; i < 1000; i++) {
 		double start_time, end_time, task_time;
 		
 		start_time = timelib_unix_timestamp();
@@ -187,7 +187,7 @@ void scheduler_run(scheduler_t *ces)
 		task_time = end_time - start_time;
 		avoid_time += task_time;
 
-		printf("iteration: %d", i);
+		printf("iteration: %d\n", i);
 	}
 	
 	double total_running_time_end = timelib_unix_timestamp();
