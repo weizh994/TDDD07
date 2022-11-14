@@ -139,6 +139,58 @@ void scheduler_run(scheduler_t *ces)
 	/* --- Set minor cycle period --- */
 	ces->minor = 500;
 
+	double refine_time = 0;
+	double report_time = 0;
+	double mission_time = 0;
+	double navigate_time = 0;
+	double control_time = 0;
+
+	for (int 0; i < 1000; i++) {
+		double start_time, end_time, task_time;
+		
+		start_time = timelib_unix_timestamp();
+		scheduler_exec_task(ces, s_TASK_REFINE_ID);
+		end_time = timelib_unix_timestamp();
+		task_time = end_time - start_time;
+		refine_time += task_time;
+		
+		start_time = timelib_unix_timestamp();
+		scheduler_exec_task(ces, s_TASK_REPORT_ID);
+		end_time = timelib_unix_timestamp();
+		task_time = end_time - start_time;
+		report_time += task_time;
+		
+		start_time = timelib_unix_timestamp();
+		scheduler_exec_task(ces, s_TASK_MISSION_ID);
+		end_time = timelib_unix_timestamp();
+		task_time = end_time - start_time;
+		mission_time += task_time;
+		
+		start_time = timelib_unix_timestamp();
+		scheduler_exec_task(ces, s_TASK_NAVIGATION_ID);
+		end_time = timelib_unix_timestamp();
+		task_time = end_time - start_time;
+		navigation_time += task_time;
+		
+		start_time = timelib_unix_timestamp();
+		scheduler_exec_task(ces, s_TASK_CONTROL_ID);
+		end_time = timelib_unix_timestamp();
+		task_time = end_time - start_time;
+		control_time += task_time;
+	}
+
+	refine_time /= 1000;
+	report_time /= 1000;
+	mission_time /= 1000;
+	navigation_time /= 1000;
+	control_time /= 1000;
+
+	printf("refine_time: %f", refine_time);
+	printf("report_time: %f", report_time);
+	printf("mission_time: %f", mission_time);
+	printf("navigation_time: %f", navigation_time);
+	printf("control_time: %f", control_time);
+
 	// Major cycle
 	/* while (1) { */
 	/* 	// Minor cycle 1 */
