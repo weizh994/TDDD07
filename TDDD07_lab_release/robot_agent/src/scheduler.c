@@ -154,13 +154,15 @@ void scheduler_run(scheduler_t *ces)
 	/* 	// Minor cycle 4 */
 	/* 	scheduler_wait_for_timer(ces); */
 	/* } */
-	scheduler_exec_task(ces, s_TASK_REFINE_ID);
-	scheduler_exec_task(ces, s_TASK_REPORT_ID);
-	double start_time = timelib_unix_timestamp();
-	scheduler_exec_task(ces, s_TASK_MISSION_ID);
-	double end_time = timelib_unix_timestamp();
-	double task_time = end_time - start_time;
-	printf("task_time: %f", task_time);
+	/* scheduler_exec_task(ces, s_TASK_REFINE_ID); */
+	/* scheduler_exec_task(ces, s_TASK_REPORT_ID); */
+	/* double start_time = timelib_unix_timestamp(); */
+	/* scheduler_exec_task(ces, s_TASK_MISSION_ID); */
+	/* double end_time = timelib_unix_timestamp(); */
+	/* double task_time = end_time - start_time; */
+	/* printf("task_time: %f", task_time); */
+	printf("hello world");
+	
 
 	/* --- Write your code here --- */
 
