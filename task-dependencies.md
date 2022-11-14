@@ -6,10 +6,14 @@
   Needs to have received a command from the Mission Control if we want to hit the second if-statement.
   
   Since the task runs a for-loop, we might want to think about the maximum feasible size of the `mission_queue`.
+  
+  Timing: 
+  REFINE -> REPORT -> MISSION: 0.002197s
 * Navigate task
   Produces data that is later processed by the Control task.
   
   Doesn't have any branching, so we only have to consider the size of the `navigation_queue` when timing the task.
+  REFINE -> REPORT -> MISSION -> NAVIGATE: 0.156982s 
 * Control task
   Timing is important for the localisation algorithm to work properly. Too slow and the approximation will be very inaccurate. Too fast and the robot can't process the requests. Should not run more often than 300 ms.
 * Avoid task
