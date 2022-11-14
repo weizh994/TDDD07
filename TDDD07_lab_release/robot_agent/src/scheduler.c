@@ -127,6 +127,13 @@ void scheduler_exec_task(scheduler_t *ces, int task_id)
 	}
 }
 
+double run_task(int task_id) {
+	double start_time = timelib_unix_timestamp();
+	scheduler_exec_task(ces, task_id);
+	double end_time = timelib_unix_timestamp();
+	return end_time - start_time;
+}
+
 /**
  * Run scheduler
  * @param ces Pointer to scheduler structure
@@ -151,43 +158,12 @@ void scheduler_run(scheduler_t *ces)
 	int ITERATIONS = 300;
 
 	for (int i= 0; i < ITERATIONS; i++) {
-		double start_time, end_time, task_time;
-		
-		start_time = timelib_unix_timestamp();
-		scheduler_exec_task(ces, s_TASK_REFINE_ID);
-		end_time = timelib_unix_timestamp();
-		task_time = end_time - start_time;
-		refine_time += task_time;
-		
-		start_time = timelib_unix_timestamp();
-		scheduler_exec_task(ces, s_TASK_REPORT_ID);
-		end_time = timelib_unix_timestamp();
-		task_time = end_time - start_time;
-		report_time += task_time;
-		
-		start_time = timelib_unix_timestamp();
-		scheduler_exec_task(ces, s_TASK_MISSION_ID);
-		end_time = timelib_unix_timestamp();
-		task_time = end_time - start_time;
-		mission_time += task_time;
-		
-		start_time = timelib_unix_timestamp();
-		scheduler_exec_task(ces, s_TASK_NAVIGATE_ID);
-		end_time = timelib_unix_timestamp();
-		task_time = end_time - start_time;
-		navigate_time += task_time;
-
-		start_time = timelib_unix_timestamp();
-		scheduler_exec_task(ces, s_TASK_CONTROL_ID);
-		end_time = timelib_unix_timestamp();
-		task_time = end_time - start_time;
-		control_time += task_time;
-		
-		start_time = timelib_unix_timestamp();
-		scheduler_exec_task(ces, s_TASK_AVOID_ID);
-		end_time = timelib_unix_timestamp();
-		task_time = end_time - start_time;
-		avoid_time += task_time;
+		refine_time += run_task(s_TASK_REFINE_ID);
+		report_time += run_task(s_TASK_REPORT_ID);
+		mission_time += run_task(s_TASK_MISSION_ID);
+		navigate_time += run_task(s_TASK_NAVIGATE_ID);
+		control_time += run_task(s_TASK_CONTROL_ID);
+		avoid_time += run_task(s_TASK_AVOID_ID);
 	
 		printf("iteration: %d\n", i);
 	}
