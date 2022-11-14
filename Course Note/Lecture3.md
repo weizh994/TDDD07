@@ -59,6 +59,8 @@ $U= C_1/T_1+...+C_n/T_n \leq 1$
 * EDF has simpler exact analysis for the mentioned type of task sets
 * But suffers from domino effect…
 * RMS can be implemented to run faster at runtime (if we ignore the time for context switching)
+>[Deeper analysis of RMS and EDF based on
+Buttazzo 2005 article!]
 
 ## Sharing resources
 * Assume that processes synchronise using semaphores
@@ -70,7 +72,7 @@ $U= C_1/T_1+...+C_n/T_n \leq 1$
 * A medium priority process ($P_3$)
 preempts $P_1$ and runs to completion before $P_2$!
 ### How to avoid it?
-* When $P_2$ is blocked by P1 one raises the priority of $P_1$ to the same level as $P_2$ temporarily
+* When $P_2$ is blocked by P1 one raises the priority of $P_1$ to **the same level** as $P_2$ temporarily(with Inheritence)
 * Afterwards, when the semaphore is released by $P_1$, it goes back to its prior priority level
 * $P_3$ can not interrupt $P_1$ any more!
 
@@ -100,7 +102,9 @@ another engaged resource’s ceiling)
 function of the length of all critical
 sections
   * We need to compute this ($B_i$) for each
-process!
+process! 
+> $B_i=\max(CS_j) for\ all\ resources R_j$  
+so that $ceiling(R_j)\geq priority(P_i)$
 * Do not even need to use semaphores!
 * A process is blocked max once by
 another process with lower priority
