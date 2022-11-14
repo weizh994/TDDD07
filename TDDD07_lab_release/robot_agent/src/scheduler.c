@@ -176,6 +176,12 @@ void scheduler_run(scheduler_t *ces)
 		end_time = timelib_unix_timestamp();
 		task_time = end_time - start_time;
 		navigate_time += task_time;
+
+		start_time = timelib_unix_timestamp();
+		scheduler_exec_task(ces, s_TASK_AVOID_ID);
+		end_time = timelib_unix_timestamp();
+		task_time = end_time - start_time;
+		avoid_time += task_time;
 		
 		start_time = timelib_unix_timestamp();
 		scheduler_exec_task(ces, s_TASK_CONTROL_ID);
@@ -183,12 +189,7 @@ void scheduler_run(scheduler_t *ces)
 		task_time = end_time - start_time;
 		control_time += task_time;
 		
-		start_time = timelib_unix_timestamp();
-		scheduler_exec_task(ces, s_TASK_AVOID_ID);
-		end_time = timelib_unix_timestamp();
-		task_time = end_time - start_time;
-		avoid_time += task_time;
-
+	
 		printf("iteration: %d\n", i);
 	}
 	
