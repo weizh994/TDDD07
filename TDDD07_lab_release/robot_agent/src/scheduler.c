@@ -152,6 +152,7 @@ void scheduler_run(scheduler_t *ces)
 	double navigate_time = 0;
 	double control_time = 0;
 	double avoid_time = 0;
+	double avoid_time_max = 0;
 
 	double total_running_time_start = timelib_unix_timestamp();
 
@@ -164,6 +165,7 @@ void scheduler_run(scheduler_t *ces)
 		/* navigate_time += run_task(ces, s_TASK_NAVIGATE_ID); */
 		/* control_time += run_task(ces, s_TASK_CONTROL_ID); */
 		avoid_time += run_task(ces, s_TASK_AVOID_ID);
+		avoid_time_max = (avoid_task > avoid_task_max) ? avoid_task : avoid_task_max;
 	
 		printf("iteration: %d\n", i);
 	}
@@ -184,6 +186,7 @@ void scheduler_run(scheduler_t *ces)
 	printf("navigation_time: %f\n", navigate_time);
 	printf("control_time: %f\n", control_time);
 	printf("avoid_time: %f\n", avoid_time);
+	printf("avoid_time_max: %f\n", avoid_time_max);
 	printf("total_running_time: %f\n", total_running_time);
 
 	// Major cycle
