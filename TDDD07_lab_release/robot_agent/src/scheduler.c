@@ -159,13 +159,16 @@ void scheduler_run(scheduler_t *ces)
 	int ITERATIONS = 300;
 
 	for (int i= 0; i < ITERATIONS; i++) {
+		double task_time = 0;
 		/* refine_time += run_task(ces, s_TASK_REFINE_ID); */
 		/* report_time += run_task(ces, s_TASK_REPORT_ID); */
 		/* mission_time += run_task(ces, s_TASK_MISSION_ID); */
 		/* navigate_time += run_task(ces, s_TASK_NAVIGATE_ID); */
 		/* control_time += run_task(ces, s_TASK_CONTROL_ID); */
-		avoid_time += run_task(ces, s_TASK_AVOID_ID);
-		avoid_time_max = (avoid_time > avoid_time_max) ? avoid_time : avoid_time_max;
+
+		task_time = run_task(ces, s_TASK_AVOID_ID);
+		avoid_time += task_time;
+		avoid_time_max = (task_time > avoid_time_max) ? task_time : avoid_time_max;
 	
 		printf("iteration: %d\n", i);
 	}
