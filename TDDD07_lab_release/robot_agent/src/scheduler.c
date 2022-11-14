@@ -177,6 +177,8 @@ void scheduler_run(scheduler_t *ces)
 		end_time = timelib_unix_timestamp();
 		task_time = end_time - start_time;
 		control_time += task_time;
+
+		printf("iteration: %d", i);
 	}
 
 	refine_time /= 1000;
