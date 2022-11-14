@@ -148,7 +148,9 @@ void scheduler_run(scheduler_t *ces)
 
 	double total_running_time_start = timelib_unix_timestamp();
 
-	for (int = 0; i < 1000; i++) {
+	int ITERATIONS = 300;
+
+	for (int i= 0; i < ITERATIONS; i++) {
 		double start_time, end_time, task_time;
 		
 		start_time = timelib_unix_timestamp();
@@ -176,29 +178,29 @@ void scheduler_run(scheduler_t *ces)
 		navigate_time += task_time;
 		
 		start_time = timelib_unix_timestamp();
-		scheduler_exec_task(ces, s_TASK_AVOID_ID);
-		end_time = timelib_unix_timestamp();
-		task_time = end_time - start_time;
-		avoid_time += task_time;
-
-		start_time = timelib_unix_timestamp();
 		scheduler_exec_task(ces, s_TASK_CONTROL_ID);
 		end_time = timelib_unix_timestamp();
 		task_time = end_time - start_time;
 		control_time += task_time;
 		
+		start_time = timelib_unix_timestamp();
+		scheduler_exec_task(ces, s_TASK_AVOID_ID);
+		end_time = timelib_unix_timestamp();
+		task_time = end_time - start_time;
+		avoid_time += task_time;
+
 		printf("iteration: %d\n", i);
 	}
 	
 	double total_running_time_end = timelib_unix_timestamp();
 	double total_running_time = total_running_time_end - total_running_time_start;
 
-	refine_time /= 1000;
-	report_time /= 1000;
-	mission_time /= 1000;
-	navigate_time /= 1000;
-	control_time /= 1000;
-	avoid_time /= 1000;
+	refine_time /= ITERATIONS;
+	report_time /= ITERATIONS;
+	mission_time /= ITERATIONS;
+	navigate_time /= ITERATIONS;
+	control_time /= ITERATIONS;
+	avoid_time /= ITERATIONS;
 
 	printf("refine_time: %f\n", refine_time);
 	printf("report_time: %f\n", report_time);
