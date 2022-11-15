@@ -15,6 +15,7 @@
   - [Questions](#questions)
 - [Time in Distributed Systems](#time-in-distributed-systems)
   - [Local vs. global clock](#local-vs-global-clock)
+- [Event ordering](#event-ordering)
 ## Overview: Next three lectures
 From one CPU to networked CPUs:
 * First, from one CPU to multiple CPUs
