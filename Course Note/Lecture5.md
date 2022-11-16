@@ -4,8 +4,9 @@
   - [Timing of events](#timing-of-events)
     - [Different views](#different-views)
     - [Event detection](#event-detection)
+    - [Security in industrial control](#security-in-industrial-control)
   - [Safety-critical systems](#safety-critical-systems)
-    - [Causality](#causality)
+    - [Causality(因果)](#causality因果)
     - [Questions](#questions)
   - [Clock synchronisation](#clock-synchronisation)
     - [Lamport/Melliar-Smith Algorithm](#lamportmelliar-smith-algorithm)
@@ -83,6 +84,9 @@ that triggers the alarm shower
 * Knowledge of exact temporal order of
 the events is helpful in identifying the
 primary event
+### Security in industrial control
+* [Smart factories will become a reality](https://www.youtube.com/watch?v=CIAijpyN3_4)
+
 
 ## Safety-critical systems
 * Inaccurate local clocks can be a problem
@@ -90,7 +94,7 @@ if the result of computations at different
 nodes depend on time
   * If the brake signal is issued separately in
 different wheels, will the car stop and when?
-### Causality
+### Causality(因果)
 * If event e occurs after event e’ then e
 cannot be the cause of e’
 * If event e occurs before event e’ then e
@@ -116,6 +120,7 @@ within a skew of δ
   * Tries to keep a set of clock values
 close to each other with a maximum
 skew of δ
+> skew: max earliness or laterness of a tick of a clock relative a ref. clock
 ### Lamport/Melliar-Smith Algorithm
 * Internal synchronisation of n clocks
 * Each clock reads the value of all other
@@ -163,7 +168,7 @@ the time for event y then x$\prec$y
 * Rule 2: if x denotes sending a message
 and y denotes receiving the same
 message then x$\prec$y
-* Rule 3: $\prec$ is transitive(有传递性的)
+* Rule 3: $\prec$ is transitive(可传递的)
 ### Lamport’s Logical clocks
 * Logical clock: An event counter that
 respects the “happened before” ordering
@@ -201,7 +206,7 @@ at node i,
 max (T[j], VC(x)[j])
 ### Precedence in VC
 * Relation < on vector clocks defined by:
-VC(x) < VC(y) iff
+VC(x) < VC(y) **iff**
   - For all i: VC(x)[i] ≤ VC(y)[i]
   - For some i: VC(x)[i] < VC(y)[i]
 * It follows that event x $\prec$ event y if
