@@ -1,3 +1,4 @@
+
 ## Recap from [last lecture](Lecture1.md)
 * Real-time systems have well-defined
 timing requirements

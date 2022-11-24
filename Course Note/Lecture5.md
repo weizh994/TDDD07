@@ -1,4 +1,4 @@
-- [Distributed Systems & Real-time Communication](#distributed-systems--real-time-communication)
+- [Distributed Systems \& Real-time Communication](#distributed-systems--real-time-communication)
   - [Overview](#overview)
   - [Reading material](#reading-material)
   - [Timing of events](#timing-of-events)
@@ -14,7 +14,7 @@
     - [Bound on the faulty clocks](#bound-on-the-faulty-clocks)
   - [Event ordering](#event-ordering)
   - [Logical time](#logical-time)
-    - [Happened before$\prec$](#happened-beforeprec)
+    - [Happened before$\\prec$](#happened-beforeprec)
     - [Lamport’s Logical clocks](#lamports-logical-clocks)
     - [Implementing logical clocks](#implementing-logical-clocks)
   - [Vector clocks (VC)](#vector-clocks-vc)
@@ -279,7 +279,7 @@ order to turn on!
 ### Two approaches
 * We will look at two well-known methods
 for bus scheduling
-  * Time triggered (TTP)
+  * Time triggered(触发) (TTP)
   *  Event triggered (CAN)
 * Used extensively in aerospace and
 automotive applications respectively
