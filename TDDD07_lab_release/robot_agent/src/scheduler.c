@@ -141,9 +141,6 @@ FILE *fp = NULL;
 	{                                                        \
 		task_times[id] += run_task(ces, id, &max_times[id]); \
 		task_num[id]++;                                      \
-		fp = fopen("data.txt", "w+");                        \
-		fprintf(fp, "%d takes %lf\n", id, task_times[id]);   \
-		fclose(fp);                                          \
 	}
 
 const char *TASK_NAMES[] = {
@@ -170,8 +167,15 @@ double run_task(scheduler_t *ces, int task_id, double *curr_max_time)
 	scheduler_exec_task(ces, task_id);
 	double end_time = timelib_unix_timestamp();
 	double elapsed_time = end_time - start_time;
-
-	*curr_max_time = (elapsed_time > *curr_max_time) ? elapsed_time : *curr_max_time;
+	//*curr_max_time = (elapsed_time > *curr_max_time) ? elapsed_time : *curr_max_time;
+	if(elapsed_time > *curr_max_time)
+	{
+		*curr_max_time =elapsed_time;
+		fp = fopen("data.txt", "a+");                        
+		fprintf(fp, "%d takes %lf\n", task_id, *curr_max_time);   
+		fclose(fp); 
+	}
+	
 	return elapsed_time;
 }
 
