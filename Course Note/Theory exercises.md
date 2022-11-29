@@ -1,6 +1,7 @@
 - [1. Scheduling and Resource Sharing](#1-scheduling-and-resource-sharing)
   - [Q1.1:](#q11)
   - [Q1.2:](#q12)
+- [2. Distributed systems](#2-distributed-systems)
 # 1. Scheduling and Resource Sharing
    
 ## Q1.1:  
@@ -17,3 +18,12 @@ The schedulable gets guaranteed since $U<G$
 
 ## Q1.2:
 
+# 2. Distributed systems
+* Clocks
+  * Determine clock timestamps
+    * Logical
+    * Vector
+  * Determine relationship between event
+* Can
+  * Determine message priority
+  * Compute message response time
